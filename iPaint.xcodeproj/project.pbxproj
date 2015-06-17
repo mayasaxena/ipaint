@@ -24,6 +24,7 @@
 		A531FFC31B32151D00839A7F /* 20px.png in Resources */ = {isa = PBXBuildFile; fileRef = A531FFBC1B32151D00839A7F /* 20px.png */; };
 		A531FFC41B32151D00839A7F /* 25px.png in Resources */ = {isa = PBXBuildFile; fileRef = A531FFBD1B32151D00839A7F /* 25px.png */; };
 		A531FFC51B32151D00839A7F /* 30px.png in Resources */ = {isa = PBXBuildFile; fileRef = A531FFBE1B32151D00839A7F /* 30px.png */; };
+		A531FFC71B3220AE00839A7F /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = A531FFC61B3220AE00839A7F /* save.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		A531FFBC1B32151D00839A7F /* 20px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 20px.png; sourceTree = "<group>"; };
 		A531FFBD1B32151D00839A7F /* 25px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 25px.png; sourceTree = "<group>"; };
 		A531FFBE1B32151D00839A7F /* 30px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 30px.png; sourceTree = "<group>"; };
+		A531FFC61B3220AE00839A7F /* save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = save.png; path = iPaint/save.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				A531FFB21B31C0DF00839A7F /* palette.png */,
 				A531FFB31B31C0DF00839A7F /* brush.png */,
 				A531FFB61B31C12A00839A7F /* undo.png */,
+				A531FFC61B3220AE00839A7F /* save.png */,
 				A531FF861B31BECF00839A7F /* iPaint */,
 				A531FFA01B31BECF00839A7F /* iPaintTests */,
 				A531FF851B31BECF00839A7F /* Products */,
@@ -241,6 +244,7 @@
 				A531FFC31B32151D00839A7F /* 20px.png in Resources */,
 				A531FFC21B32151D00839A7F /* 15px.png in Resources */,
 				A531FFB71B31C12A00839A7F /* undo.png in Resources */,
+				A531FFC71B3220AE00839A7F /* save.png in Resources */,
 				A531FFC01B32151D00839A7F /* 5px.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,6 +11,7 @@
                 <outlet property="colorsView" destination="raZ-ry-Oim" id="Gme-Bs-efO"/>
                 <outlet property="mainImage" destination="QXz-fw-XB3" id="itT-HA-o4I"/>
                 <outlet property="paletteButton" destination="7nV-s9-F7F" id="8Xz-qU-s0J"/>
+                <outlet property="saveButton" destination="h7g-Vb-JOy" id="usm-Nq-x1w"/>
                 <outlet property="sizeView" destination="uQn-K7-bvK" id="e6r-Sz-wN8"/>
                 <outlet property="tempDrawImage" destination="VXd-C9-0ec" id="0K5-GH-Gj6"/>
                 <outlet property="undoButton" destination="pie-Lc-yMY" id="Sux-3m-tdO"/>
@@ -246,10 +247,27 @@
                         <action selector="tappedBrush:" destination="-1" eventType="touchUpInside" id="KED-gt-nEu"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7g-Vb-JOy" userLabel="Save">
+                    <rect key="frame" x="534" y="36" width="50" height="50"/>
+                    <color key="backgroundColor" red="0.0" green="0.84705882349999995" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="35j-OE-Dt1"/>
+                        <constraint firstAttribute="width" constant="50" id="7Ri-aD-akr"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                    <state key="normal" image="save.png">
+                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="tappedSave:" destination="-1" eventType="touchUpInside" id="uU6-VJ-bwQ"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="uQn-K7-bvK" secondAttribute="bottom" constant="25" id="2BH-RU-4Zn"/>
+                <constraint firstAttribute="trailing" secondItem="h7g-Vb-JOy" secondAttribute="trailing" constant="16" id="2dV-a0-IPc"/>
                 <constraint firstAttribute="trailing" secondItem="VXd-C9-0ec" secondAttribute="trailing" id="5zw-9d-qhZ"/>
                 <constraint firstItem="pie-Lc-yMY" firstAttribute="leading" secondItem="82f-N4-iky" secondAttribute="trailing" constant="30" id="7cc-gg-Oxg"/>
                 <constraint firstItem="kPJ-pH-0AY" firstAttribute="leading" secondItem="7nV-s9-F7F" secondAttribute="trailing" constant="36" id="AHi-ZB-oi8"/>
@@ -258,6 +276,7 @@
                 <constraint firstItem="uQn-K7-bvK" firstAttribute="leading" secondItem="7nV-s9-F7F" secondAttribute="trailing" constant="36" id="CdL-gR-AWN"/>
                 <constraint firstItem="VXd-C9-0ec" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="GJD-JI-DYO"/>
                 <constraint firstItem="QXz-fw-XB3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Knu-zp-hqP"/>
+                <constraint firstItem="h7g-Vb-JOy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="36" id="Osy-OU-euB"/>
                 <constraint firstItem="raZ-ry-Oim" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="PSm-Dv-g8o"/>
                 <constraint firstItem="VXd-C9-0ec" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="UG8-DZ-khV"/>
                 <constraint firstItem="7nV-s9-F7F" firstAttribute="top" secondItem="raZ-ry-Oim" secondAttribute="bottom" constant="-51" id="aTX-VP-yXN"/>
@@ -282,6 +301,7 @@
         <image name="5px.png" width="300" height="300"/>
         <image name="brush.png" width="400" height="400"/>
         <image name="palette.png" width="600" height="600"/>
+        <image name="save.png" width="300" height="300"/>
         <image name="undo.png" width="400" height="400"/>
     </resources>
 </document>

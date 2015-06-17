@@ -21,6 +21,7 @@ BOOL mouseSwiped;
 @property (weak, nonatomic) IBOutlet UIButton *brushButton;
 @property (weak, nonatomic) IBOutlet UIButton *undoButton;
 @property (weak, nonatomic) IBOutlet UIButton *clearButton;
+@property (weak, nonatomic) IBOutlet UIButton *saveButton;
 @property (weak, nonatomic) IBOutlet UIImageView *tempDrawImage;
 @property (weak, nonatomic) IBOutlet UIImageView *mainImage;
 @property (weak, nonatomic) IBOutlet UIView *colorsView;
@@ -46,6 +47,8 @@ BOOL mouseSwiped;
     self.brushButton.layer.cornerRadius = self.brushButton.bounds.size.width / 2;
     self.undoButton.layer.cornerRadius = self.undoButton.bounds.size.width / 2;
     self.clearButton.layer.cornerRadius = self.clearButton.bounds.size.width / 2;
+    self.saveButton.layer.cornerRadius = self.saveButton.bounds.size.width / 2;
+    
     self.undoStack = [[NSMutableArray alloc] init];
     
     for (UIButton *button in self.colorsView.subviews) {
@@ -67,6 +70,7 @@ BOOL mouseSwiped;
 
 - (IBAction)tappedClear:(UIButton *)sender {
     self.mainImage.image = nil;
+    [self.undoStack removeAllObjects];
 }
 
 - (IBAction)tappedUndo:(UIButton *)sender {
@@ -83,6 +87,9 @@ BOOL mouseSwiped;
     }
 }
 
+- (IBAction)tappedSave:(UIButton *)sender {
+    UIImageWriteToSavedPhotosAlbum(self.mainImage.image,nil,nil,nil);
+}
 
 
 - (void) showMenuFromButton:(UIButton *)originButton withView:(UIView *)view {
@@ -148,7 +155,7 @@ BOOL mouseSwiped;
     mouseSwiped = YES;
     UITouch *touch = [touches anyObject];
     CGPoint currentPoint = [touch locationInView:self.view];
-    UIGraphicsBeginImageContext(self.view.frame.size);
+    UIGraphicsBeginImageContextWithOptions(self.view.frame.size, NO, 0.0);
     [self.tempDrawImage.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     CGContextMoveToPoint(UIGraphicsGetCurrentContext(), lastPoint.x, lastPoint.y);
     CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), currentPoint.x, currentPoint.y);
@@ -169,7 +176,7 @@ BOOL mouseSwiped;
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     
     if(!mouseSwiped) {
-        UIGraphicsBeginImageContext(self.view.frame.size);
+        UIGraphicsBeginImageContextWithOptions(self.view.frame.size, NO, 0.0);
         [self.tempDrawImage.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
         CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound);
         CGContextSetLineWidth(UIGraphicsGetCurrentContext(), brush);
@@ -182,7 +189,7 @@ BOOL mouseSwiped;
         UIGraphicsEndImageContext();
     }
     
-    UIGraphicsBeginImageContext(self.mainImage.frame.size);
+    UIGraphicsBeginImageContextWithOptions(self.view.frame.size, NO, 0.0);
     [self.mainImage.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) blendMode:kCGBlendModeNormal alpha:1.0];
     [self.tempDrawImage.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) blendMode:kCGBlendModeNormal alpha:opacity];
     self.mainImage.image = UIGraphicsGetImageFromCurrentImageContext();
@@ -192,16 +199,14 @@ BOOL mouseSwiped;
 }
 
 - (void) pushOntoStack:(UIImage *)image {
-    if ([self.undoStack count] >= 20) {
+    if ([self.undoStack count] >= 10) {
         [self.undoStack removeObjectAtIndex:0];
     }
     [self.undoStack addObject:image];
     
-    NSLog(@"%d", [self.undoStack count]);
 }
 
 - (UIImage *) popOffStack {
-     NSLog(@"%d", [self.undoStack count]);
     if ([self.undoStack count] > 0) {
         [self.undoStack removeLastObject];
         return [self.undoStack lastObject];

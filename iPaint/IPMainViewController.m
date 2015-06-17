@@ -26,8 +26,7 @@ BOOL mouseSwiped;
 @property (weak, nonatomic) IBOutlet UIView *colorsView;
 @property (weak, nonatomic) IBOutlet UIView *sizeView;
 
-@property CGMutablePathRef currentPaths;
-@property NSMutableArray *points;
+@property (strong) NSMutableArray *undoStack;
 
 @end
 
@@ -47,10 +46,7 @@ BOOL mouseSwiped;
     self.brushButton.layer.cornerRadius = self.brushButton.bounds.size.width / 2;
     self.undoButton.layer.cornerRadius = self.undoButton.bounds.size.width / 2;
     self.clearButton.layer.cornerRadius = self.clearButton.bounds.size.width / 2;
-    self.currentPaths = CGPathCreateMutable();
-    self.points = [[NSMutableArray alloc] init];
-    
-    
+    self.undoStack = [[NSMutableArray alloc] init];
     
     for (UIButton *button in self.colorsView.subviews) {
         button.layer.cornerRadius = button.bounds.size.width / 2;
@@ -69,8 +65,13 @@ BOOL mouseSwiped;
     }
 }
 
-- (IBAction)tappedClear:(id)sender {
+- (IBAction)tappedClear:(UIButton *)sender {
     self.mainImage.image = nil;
+}
+
+- (IBAction)tappedUndo:(UIButton *)sender {
+    self.mainImage.image = nil;
+    self.mainImage.image = [self popOffStack];
 }
 
 - (IBAction)tappedPalette:(UIButton *)sender {
@@ -81,6 +82,8 @@ BOOL mouseSwiped;
         [self hideMenuFromButton:self.paletteButton withView:self.colorsView];
     }
 }
+
+
 
 - (void) showMenuFromButton:(UIButton *)originButton withView:(UIView *)view {
     view.hidden = NO;
@@ -138,7 +141,6 @@ BOOL mouseSwiped;
     mouseSwiped = NO;
     UITouch *touch = [touches anyObject];
     lastPoint = [touch locationInView:self.view];
-    [self.points addObject:[NSValue valueWithCGPoint:lastPoint]];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -146,7 +148,6 @@ BOOL mouseSwiped;
     mouseSwiped = YES;
     UITouch *touch = [touches anyObject];
     CGPoint currentPoint = [touch locationInView:self.view];
-    [self.points addObject:[NSValue valueWithCGPoint:lastPoint]];
     UIGraphicsBeginImageContext(self.view.frame.size);
     [self.tempDrawImage.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     CGContextMoveToPoint(UIGraphicsGetCurrentContext(), lastPoint.x, lastPoint.y);
@@ -155,8 +156,6 @@ BOOL mouseSwiped;
     CGContextSetLineWidth(UIGraphicsGetCurrentContext(), brush );
     CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), red, green, blue, 1.0);
     CGContextSetBlendMode(UIGraphicsGetCurrentContext(),kCGBlendModeNormal);
-    CGPathAddPath(self.currentPaths, NULL, CGContextCopyPath(UIGraphicsGetCurrentContext()));
-//    NSLog(@"%@",self.currentPaths);
     CGContextStrokePath(UIGraphicsGetCurrentContext());
     self.tempDrawImage.image = UIGraphicsGetImageFromCurrentImageContext();
     [self.tempDrawImage setAlpha:opacity];
@@ -168,7 +167,6 @@ BOOL mouseSwiped;
 
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    CGPathAddLines(self.currentPaths, NULL, [self getCGPointArrayFromNSMutableArray], [self.points count]);
     
     if(!mouseSwiped) {
         UIGraphicsBeginImageContext(self.view.frame.size);
@@ -188,18 +186,29 @@ BOOL mouseSwiped;
     [self.mainImage.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) blendMode:kCGBlendModeNormal alpha:1.0];
     [self.tempDrawImage.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) blendMode:kCGBlendModeNormal alpha:opacity];
     self.mainImage.image = UIGraphicsGetImageFromCurrentImageContext();
+    [self pushOntoStack:self.mainImage.image];
     self.tempDrawImage.image = nil;
     UIGraphicsEndImageContext();
 }
 
-- (const CGPoint *) getCGPointArrayFromNSMutableArray {
-    CGPoint *points = (CGPoint *)calloc([self.points count], sizeof(CGPoint));
-    
-    for (int i = 0; i < [self.points count]; i++) {
-        points[i] = [self.points[i] CGPointValue];
+- (void) pushOntoStack:(UIImage *)image {
+    if ([self.undoStack count] >= 20) {
+        [self.undoStack removeObjectAtIndex:0];
     }
+    [self.undoStack addObject:image];
     
-    return points;
+    NSLog(@"%d", [self.undoStack count]);
 }
+
+- (UIImage *) popOffStack {
+     NSLog(@"%d", [self.undoStack count]);
+    if ([self.undoStack count] > 0) {
+        [self.undoStack removeLastObject];
+        return [self.undoStack lastObject];
+    }
+    return nil;
+}
+
+
 
 @end

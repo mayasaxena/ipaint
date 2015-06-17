@@ -24,6 +24,7 @@ BOOL mouseSwiped;
 @property (weak, nonatomic) IBOutlet UIImageView *tempDrawImage;
 @property (weak, nonatomic) IBOutlet UIImageView *mainImage;
 @property (weak, nonatomic) IBOutlet UIView *colorsView;
+@property (weak, nonatomic) IBOutlet UIView *sizeView;
 
 @property CGMutablePathRef currentPaths;
 @property NSMutableArray *points;
@@ -54,8 +55,19 @@ BOOL mouseSwiped;
     for (UIButton *button in self.colorsView.subviews) {
         button.layer.cornerRadius = button.bounds.size.width / 2;
     }
+    
+    for (UIButton *button in self.sizeView.subviews) {
+        button.layer.cornerRadius = button.bounds.size.width / 2;
+    }
 }
 
+- (IBAction)tappedBrush:(UIButton *)sender {
+    if (self.sizeView.hidden) {
+        [self showMenuFromButton:self.brushButton withView:self.sizeView];
+    } else {
+        [self hideMenuFromButton:self.brushButton withView:self.sizeView];
+    }
+}
 
 - (IBAction)tappedClear:(id)sender {
     self.mainImage.image = nil;
@@ -70,13 +82,12 @@ BOOL mouseSwiped;
     }
 }
 
-
 - (void) showMenuFromButton:(UIButton *)originButton withView:(UIView *)view {
     view.hidden = NO;
     [UIView animateWithDuration:0.5f animations:^{
         int yOffset = 0;
         for (UIButton *button in view.subviews) {
-            [button setFrame:CGRectMake(originButton.frame.origin.x - 5, yOffset, 30, 30)];
+            [button setFrame:CGRectMake(button.center.x - button.frame.size.width / 2, yOffset, button.frame.size.width, button.frame.size.height)];
             yOffset += 35;
         }
         
@@ -84,11 +95,12 @@ BOOL mouseSwiped;
 }
 
 - (void) hideMenuFromButton:(UIButton *)originButton withView:(UIView *)view {
+    
     [UIView animateWithDuration:0.5f
                      animations:^{
                          for (UIButton *button in view.subviews) {
-                             [button setFrame:CGRectMake(originButton.frame.origin.x - 5, view.bounds.origin.y
-                                                         + view.bounds.size.height - 50, 30, 30)];
+                             [button setFrame:CGRectMake(button.center.x - button.frame.size.width / 2, view.bounds.origin.y
+                                                         + view.bounds.size.height - 50, button.frame.size.width, button.frame.size.height)];
                          }
                      } completion:^(BOOL finished) {
                          view.hidden = YES;
@@ -110,6 +122,16 @@ BOOL mouseSwiped;
     }
 
 }
+
+- (IBAction)tappedSize:(UIButton *)sender {
+    [self hideMenuFromButton:self.brushButton withView:self.sizeView];
+    
+    brush = sender.tag;
+}
+
+
+#pragma mark - Drawing Functions
+
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
   

@@ -11,6 +11,7 @@
                 <outlet property="colorsView" destination="raZ-ry-Oim" id="Gme-Bs-efO"/>
                 <outlet property="mainImage" destination="QXz-fw-XB3" id="itT-HA-o4I"/>
                 <outlet property="paletteButton" destination="7nV-s9-F7F" id="8Xz-qU-s0J"/>
+                <outlet property="sizeView" destination="uQn-K7-bvK" id="e6r-Sz-wN8"/>
                 <outlet property="tempDrawImage" destination="VXd-C9-0ec" id="0K5-GH-Gj6"/>
                 <outlet property="undoButton" destination="pie-Lc-yMY" id="Sux-3m-tdO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -107,17 +108,86 @@
                         <constraint firstAttribute="width" constant="50" id="hLp-ia-w9J"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kPJ-pH-0AY" userLabel="Brush">
-                    <rect key="frame" x="102" y="525" width="50" height="50"/>
-                    <color key="backgroundColor" red="0.0" green="0.84705882349999995" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uQn-K7-bvK" userLabel="Size view">
+                    <rect key="frame" x="102" y="275" width="50" height="300"/>
+                    <subviews>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2f-eM-yy0" userLabel="2">
+                            <rect key="frame" x="10" y="260" width="30" height="30"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <state key="normal" backgroundImage="2px.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="tappedSize:" destination="-1" eventType="touchUpInside" id="i4X-Ct-QJl"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZBM-Kl-Tgf" userLabel="5">
+                            <rect key="frame" x="10" y="260" width="30" height="30"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <state key="normal" backgroundImage="5px.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="tappedSize:" destination="-1" eventType="touchUpInside" id="zT5-V8-Rbe"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lhb-4a-ShB" userLabel="10">
+                            <rect key="frame" x="10" y="260" width="30" height="30"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <state key="normal" backgroundImage="10px.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="tappedSize:" destination="-1" eventType="touchUpInside" id="Vlc-Jb-Ghq"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="15" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7FX-O8-1cv" userLabel="15">
+                            <rect key="frame" x="10" y="260" width="30" height="30"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <state key="normal" backgroundImage="15px.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="tappedSize:" destination="-1" eventType="touchUpInside" id="TqT-tp-0ZV"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="20" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="La9-R2-PC5" userLabel="20">
+                            <rect key="frame" x="10" y="260" width="30" height="30"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <state key="normal" backgroundImage="20px.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="tappedSize:" destination="-1" eventType="touchUpInside" id="swS-MT-5IS"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="25" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vcS-ff-MiI" userLabel="25">
+                            <rect key="frame" x="10" y="260" width="30" height="30"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <state key="normal" backgroundImage="25px.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="tappedSize:" destination="-1" eventType="touchUpInside" id="CeY-UL-NSm"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="30" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZg-yO-bcK" userLabel="30">
+                            <rect key="frame" x="10" y="260" width="30" height="30"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <state key="normal" backgroundImage="30px.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="tappedSize:" destination="-1" eventType="touchUpInside" id="fNA-ZK-soc"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="84x-rG-pzq"/>
-                        <constraint firstAttribute="width" constant="50" id="PWC-gP-JDu"/>
+                        <constraint firstAttribute="width" constant="50" id="v0U-e7-DF2"/>
+                        <constraint firstAttribute="height" constant="300" id="vat-Dn-t3x"/>
                     </constraints>
-                    <state key="normal" image="brush.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
+                </view>
                 <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="82f-N4-iky">
                     <rect key="frame" x="454" y="526" width="50" height="50"/>
                     <color key="backgroundColor" red="0.0" green="0.84705882349999995" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -159,86 +229,20 @@
                         <action selector="tappedPalette:" destination="-1" eventType="touchUpInside" id="9Ds-1A-g5i"/>
                     </connections>
                 </button>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uQn-K7-bvK" userLabel="Size view">
-                    <rect key="frame" x="102" y="275" width="50" height="300"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2f-eM-yy0" userLabel="1">
-                            <rect key="frame" x="25" y="260" width="1" height="1"/>
-                            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <state key="normal">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="tappedColor:" destination="-1" eventType="touchUpInside" id="e2G-Pb-kk6"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZBM-Kl-Tgf" userLabel="5">
-                            <rect key="frame" x="23" y="260" width="6" height="5"/>
-                            <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <state key="normal">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="tappedColor:" destination="-1" eventType="touchUpInside" id="lhd-fk-Z2k"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lhb-4a-ShB" userLabel="10">
-                            <rect key="frame" x="20" y="260" width="10" height="10"/>
-                            <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <state key="normal">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="tappedColor:" destination="-1" eventType="touchUpInside" id="jWs-OI-4JL"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7FX-O8-1cv" userLabel="15">
-                            <rect key="frame" x="17" y="260" width="16" height="15"/>
-                            <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <state key="normal">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="tappedColor:" destination="-1" eventType="touchUpInside" id="9M4-hm-JgW"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="La9-R2-PC5" userLabel="20">
-                            <rect key="frame" x="15" y="260" width="20" height="20"/>
-                            <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <state key="normal">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="tappedColor:" destination="-1" eventType="touchUpInside" id="ApV-nt-MLF"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vcS-ff-MiI" userLabel="25">
-                            <rect key="frame" x="12" y="260" width="26" height="25"/>
-                            <color key="backgroundColor" red="0.80000001190000003" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <state key="normal">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="tappedColor:" destination="-1" eventType="touchUpInside" id="rXR-aD-Ufb"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZg-yO-bcK" userLabel="30">
-                            <rect key="frame" x="10" y="260" width="30" height="30"/>
-                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            <state key="normal">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="tappedColor:" destination="-1" eventType="touchUpInside" id="2lv-oH-bj7"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kPJ-pH-0AY" userLabel="Brush">
+                    <rect key="frame" x="102" y="525" width="50" height="50"/>
+                    <color key="backgroundColor" red="0.0" green="0.84705882349999995" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="50" id="v0U-e7-DF2"/>
-                        <constraint firstAttribute="height" constant="300" id="vat-Dn-t3x"/>
+                        <constraint firstAttribute="height" constant="50" id="84x-rG-pzq"/>
+                        <constraint firstAttribute="width" constant="50" id="PWC-gP-JDu"/>
                     </constraints>
-                </view>
+                    <state key="normal" image="brush.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="tappedBrush:" destination="-1" eventType="touchUpInside" id="KED-gt-nEu"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -266,6 +270,13 @@
         </view>
     </objects>
     <resources>
+        <image name="10px.png" width="300" height="300"/>
+        <image name="15px.png" width="300" height="300"/>
+        <image name="20px.png" width="300" height="300"/>
+        <image name="25px.png" width="300" height="300"/>
+        <image name="2px.png" width="300" height="300"/>
+        <image name="30px.png" width="300" height="300"/>
+        <image name="5px.png" width="300" height="300"/>
         <image name="brush.png" width="400" height="400"/>
         <image name="palette.png" width="600" height="600"/>
         <image name="undo.png" width="400" height="400"/>

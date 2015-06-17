@@ -9,6 +9,9 @@
 #import "IPMainViewController.h"
 
 @interface IPMainViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *paletteButton;
+@property (weak, nonatomic) IBOutlet UIButton *brushButton;
+@property (weak, nonatomic) IBOutlet UIButton *undoButton;
 
 @end
 
@@ -17,6 +20,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.paletteButton.layer.cornerRadius = self.paletteButton.bounds.size.width / 2;
+    self.brushButton.layer.cornerRadius = self.brushButton.bounds.size.width / 2;
+    self.undoButton.layer.cornerRadius = self.undoButton.bounds.size.width / 2;
+
 }
 
 - (void)didReceiveMemoryWarning {

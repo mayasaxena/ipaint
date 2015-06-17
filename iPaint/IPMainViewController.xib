@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D2134" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IPMainViewController">
             <connections>
+                <outlet property="brushButton" destination="kPJ-pH-0AY" id="8we-bn-hCz"/>
+                <outlet property="paletteButton" destination="7nV-s9-F7F" id="8Xz-qU-s0J"/>
+                <outlet property="undoButton" destination="pie-Lc-yMY" id="Sux-3m-tdO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -13,7 +16,55 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kPJ-pH-0AY" userLabel="Brush">
+                    <rect key="frame" x="102" y="526" width="49" height="49"/>
+                    <color key="backgroundColor" red="0.0" green="0.84705882349999995" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="49" id="84x-rG-pzq"/>
+                        <constraint firstAttribute="width" constant="49" id="PWC-gP-JDu"/>
+                    </constraints>
+                    <state key="normal" image="brush.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pie-Lc-yMY" userLabel="Undo">
+                    <rect key="frame" x="534" y="526" width="50" height="50"/>
+                    <color key="backgroundColor" red="0.0" green="0.84705882349999995" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="2yo-go-ueX"/>
+                        <constraint firstAttribute="height" constant="50" id="pEv-H3-qgH"/>
+                    </constraints>
+                    <state key="normal" image="undo.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7nV-s9-F7F" userLabel="Palette">
+                    <rect key="frame" x="16" y="525" width="50" height="50"/>
+                    <color key="backgroundColor" red="0.0" green="0.84705882349999995" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="Otl-6F-TMb"/>
+                        <constraint firstAttribute="height" constant="50" id="cyf-7w-FYL"/>
+                    </constraints>
+                    <state key="normal" image="palette.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="kPJ-pH-0AY" firstAttribute="leading" secondItem="7nV-s9-F7F" secondAttribute="trailing" constant="36" id="AHi-ZB-oi8"/>
+                <constraint firstAttribute="bottom" secondItem="7nV-s9-F7F" secondAttribute="bottom" constant="25" id="Aym-Y2-BAe"/>
+                <constraint firstAttribute="bottom" secondItem="pie-Lc-yMY" secondAttribute="bottom" constant="24" id="B0E-nK-cd7"/>
+                <constraint firstItem="7nV-s9-F7F" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="m5j-06-HCI"/>
+                <constraint firstAttribute="trailing" secondItem="pie-Lc-yMY" secondAttribute="trailing" constant="16" id="mSq-Ud-aZS"/>
+                <constraint firstAttribute="bottom" secondItem="kPJ-pH-0AY" secondAttribute="bottom" constant="25" id="rgy-Cd-v5b"/>
+            </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="brush.png" width="400" height="400"/>
+        <image name="palette.png" width="600" height="600"/>
+        <image name="undo.png" width="400" height="400"/>
+    </resources>
 </document>

@@ -14,8 +14,9 @@
 		A531FFA41B31BECF00839A7F /* iPaintTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A531FFA31B31BECF00839A7F /* iPaintTests.m */; };
 		A531FFB01B31BF9600839A7F /* IPMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A531FFAE1B31BF9600839A7F /* IPMainViewController.m */; };
 		A531FFB11B31BF9600839A7F /* IPMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A531FFAF1B31BF9600839A7F /* IPMainViewController.xib */; };
-		A531FFB41B31C0DF00839A7F /* art-palette-icon-240-paint-color-palette-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = A531FFB21B31C0DF00839A7F /* art-palette-icon-240-paint-color-palette-vector.png */; };
-		A531FFB51B31C0DF00839A7F /* paint-brush-png-meanicons_14-512.png in Resources */ = {isa = PBXBuildFile; fileRef = A531FFB31B31C0DF00839A7F /* paint-brush-png-meanicons_14-512.png */; };
+		A531FFB41B31C0DF00839A7F /* palette.png in Resources */ = {isa = PBXBuildFile; fileRef = A531FFB21B31C0DF00839A7F /* palette.png */; };
+		A531FFB51B31C0DF00839A7F /* brush.png in Resources */ = {isa = PBXBuildFile; fileRef = A531FFB31B31C0DF00839A7F /* brush.png */; };
+		A531FFB71B31C12A00839A7F /* undo.png in Resources */ = {isa = PBXBuildFile; fileRef = A531FFB61B31C12A00839A7F /* undo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,8 +43,9 @@
 		A531FFAD1B31BF9600839A7F /* IPMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPMainViewController.h; sourceTree = "<group>"; };
 		A531FFAE1B31BF9600839A7F /* IPMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPMainViewController.m; sourceTree = "<group>"; };
 		A531FFAF1B31BF9600839A7F /* IPMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IPMainViewController.xib; sourceTree = "<group>"; };
-		A531FFB21B31C0DF00839A7F /* art-palette-icon-240-paint-color-palette-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "art-palette-icon-240-paint-color-palette-vector.png"; path = "iPaint/art-palette-icon-240-paint-color-palette-vector.png"; sourceTree = "<group>"; };
-		A531FFB31B31C0DF00839A7F /* paint-brush-png-meanicons_14-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "paint-brush-png-meanicons_14-512.png"; path = "iPaint/paint-brush-png-meanicons_14-512.png"; sourceTree = "<group>"; };
+		A531FFB21B31C0DF00839A7F /* palette.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = palette.png; path = iPaint/palette.png; sourceTree = "<group>"; };
+		A531FFB31B31C0DF00839A7F /* brush.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = brush.png; path = iPaint/brush.png; sourceTree = "<group>"; };
+		A531FFB61B31C12A00839A7F /* undo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = undo.png; path = iPaint/undo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,8 +69,9 @@
 		A531FF7B1B31BECF00839A7F = {
 			isa = PBXGroup;
 			children = (
-				A531FFB21B31C0DF00839A7F /* art-palette-icon-240-paint-color-palette-vector.png */,
-				A531FFB31B31C0DF00839A7F /* paint-brush-png-meanicons_14-512.png */,
+				A531FFB21B31C0DF00839A7F /* palette.png */,
+				A531FFB31B31C0DF00839A7F /* brush.png */,
+				A531FFB61B31C12A00839A7F /* undo.png */,
 				A531FF861B31BECF00839A7F /* iPaint */,
 				A531FFA01B31BECF00839A7F /* iPaintTests */,
 				A531FF851B31BECF00839A7F /* Products */,
@@ -207,9 +210,10 @@
 			files = (
 				A531FFB11B31BF9600839A7F /* IPMainViewController.xib in Resources */,
 				A531FF981B31BECF00839A7F /* LaunchScreen.xib in Resources */,
-				A531FFB51B31C0DF00839A7F /* paint-brush-png-meanicons_14-512.png in Resources */,
+				A531FFB51B31C0DF00839A7F /* brush.png in Resources */,
 				A531FF951B31BECF00839A7F /* Images.xcassets in Resources */,
-				A531FFB41B31C0DF00839A7F /* art-palette-icon-240-paint-color-palette-vector.png in Resources */,
+				A531FFB41B31C0DF00839A7F /* palette.png in Resources */,
+				A531FFB71B31C12A00839A7F /* undo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

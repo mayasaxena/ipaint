@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>0BF41E1E-AB6F-489A-A079-A148E36CA913</string>
+	<key>IDESourceControlProjectName</key>
+	<string>project</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>13500EEF0E8C06EC0AF7A2DA7BC5903C04D00750</key>
+		<string>https://github.com/mayasaxena/ipaint.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>iPaint.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>13500EEF0E8C06EC0AF7A2DA7BC5903C04D00750</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/mayasaxena/ipaint.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>13500EEF0E8C06EC0AF7A2DA7BC5903C04D00750</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>13500EEF0E8C06EC0AF7A2DA7BC5903C04D00750</string>
+			<key>IDESourceControlWCCName</key>
+			<string>iPaint</string>
+		</dict>
+	</array>
+</dict>
+</plist>

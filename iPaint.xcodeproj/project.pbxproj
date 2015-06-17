@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		A531FF8A1B31BECF00839A7F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A531FF891B31BECF00839A7F /* main.m */; };
 		A531FF8D1B31BECF00839A7F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A531FF8C1B31BECF00839A7F /* AppDelegate.m */; };
-		A531FF901B31BECF00839A7F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A531FF8F1B31BECF00839A7F /* ViewController.m */; };
-		A531FF931B31BECF00839A7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A531FF911B31BECF00839A7F /* Main.storyboard */; };
 		A531FF951B31BECF00839A7F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A531FF941B31BECF00839A7F /* Images.xcassets */; };
 		A531FF981B31BECF00839A7F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A531FF961B31BECF00839A7F /* LaunchScreen.xib */; };
 		A531FFA41B31BECF00839A7F /* iPaintTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A531FFA31B31BECF00839A7F /* iPaintTests.m */; };
+		A531FFB01B31BF9600839A7F /* IPMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A531FFAE1B31BF9600839A7F /* IPMainViewController.m */; };
+		A531FFB11B31BF9600839A7F /* IPMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A531FFAF1B31BF9600839A7F /* IPMainViewController.xib */; };
+		A531FFB41B31C0DF00839A7F /* art-palette-icon-240-paint-color-palette-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = A531FFB21B31C0DF00839A7F /* art-palette-icon-240-paint-color-palette-vector.png */; };
+		A531FFB51B31C0DF00839A7F /* paint-brush-png-meanicons_14-512.png in Resources */ = {isa = PBXBuildFile; fileRef = A531FFB31B31C0DF00839A7F /* paint-brush-png-meanicons_14-512.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +34,16 @@
 		A531FF891B31BECF00839A7F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A531FF8B1B31BECF00839A7F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A531FF8C1B31BECF00839A7F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		A531FF8E1B31BECF00839A7F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		A531FF8F1B31BECF00839A7F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		A531FF921B31BECF00839A7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A531FF941B31BECF00839A7F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A531FF971B31BECF00839A7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		A531FF9D1B31BECF00839A7F /* iPaintTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iPaintTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A531FFA21B31BECF00839A7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A531FFA31B31BECF00839A7F /* iPaintTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iPaintTests.m; sourceTree = "<group>"; };
+		A531FFAD1B31BF9600839A7F /* IPMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPMainViewController.h; sourceTree = "<group>"; };
+		A531FFAE1B31BF9600839A7F /* IPMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPMainViewController.m; sourceTree = "<group>"; };
+		A531FFAF1B31BF9600839A7F /* IPMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IPMainViewController.xib; sourceTree = "<group>"; };
+		A531FFB21B31C0DF00839A7F /* art-palette-icon-240-paint-color-palette-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "art-palette-icon-240-paint-color-palette-vector.png"; path = "iPaint/art-palette-icon-240-paint-color-palette-vector.png"; sourceTree = "<group>"; };
+		A531FFB31B31C0DF00839A7F /* paint-brush-png-meanicons_14-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "paint-brush-png-meanicons_14-512.png"; path = "iPaint/paint-brush-png-meanicons_14-512.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 		A531FF7B1B31BECF00839A7F = {
 			isa = PBXGroup;
 			children = (
+				A531FFB21B31C0DF00839A7F /* art-palette-icon-240-paint-color-palette-vector.png */,
+				A531FFB31B31C0DF00839A7F /* paint-brush-png-meanicons_14-512.png */,
 				A531FF861B31BECF00839A7F /* iPaint */,
 				A531FFA01B31BECF00839A7F /* iPaintTests */,
 				A531FF851B31BECF00839A7F /* Products */,
@@ -83,12 +89,12 @@
 			children = (
 				A531FF8B1B31BECF00839A7F /* AppDelegate.h */,
 				A531FF8C1B31BECF00839A7F /* AppDelegate.m */,
-				A531FF8E1B31BECF00839A7F /* ViewController.h */,
-				A531FF8F1B31BECF00839A7F /* ViewController.m */,
-				A531FF911B31BECF00839A7F /* Main.storyboard */,
 				A531FF941B31BECF00839A7F /* Images.xcassets */,
 				A531FF961B31BECF00839A7F /* LaunchScreen.xib */,
 				A531FF871B31BECF00839A7F /* Supporting Files */,
+				A531FFAD1B31BF9600839A7F /* IPMainViewController.h */,
+				A531FFAE1B31BF9600839A7F /* IPMainViewController.m */,
+				A531FFAF1B31BF9600839A7F /* IPMainViewController.xib */,
 			);
 			path = iPaint;
 			sourceTree = "<group>";
@@ -199,9 +205,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A531FF931B31BECF00839A7F /* Main.storyboard in Resources */,
+				A531FFB11B31BF9600839A7F /* IPMainViewController.xib in Resources */,
 				A531FF981B31BECF00839A7F /* LaunchScreen.xib in Resources */,
+				A531FFB51B31C0DF00839A7F /* paint-brush-png-meanicons_14-512.png in Resources */,
 				A531FF951B31BECF00839A7F /* Images.xcassets in Resources */,
+				A531FFB41B31C0DF00839A7F /* art-palette-icon-240-paint-color-palette-vector.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,7 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A531FF901B31BECF00839A7F /* ViewController.m in Sources */,
+				A531FFB01B31BF9600839A7F /* IPMainViewController.m in Sources */,
 				A531FF8D1B31BECF00839A7F /* AppDelegate.m in Sources */,
 				A531FF8A1B31BECF00839A7F /* main.m in Sources */,
 			);
@@ -244,14 +252,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		A531FF911B31BECF00839A7F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A531FF921B31BECF00839A7F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A531FF961B31BECF00839A7F /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

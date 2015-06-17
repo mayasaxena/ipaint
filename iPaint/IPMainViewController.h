@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  IPMainViewController.h
 //  iPaint
 //
 //  Created by Maya Saxena on 6/17/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface IPMainViewController : UIViewController
 
 @end
-

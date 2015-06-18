@@ -75,7 +75,10 @@ BOOL mouseSwiped;
 
 - (IBAction)tappedUndo:(UIButton *)sender {
     self.mainImage.image = nil;
-    self.mainImage.image = [self popOffStack];
+    UIImage *undone = [self popOffStack];
+    if (undone != nil) {
+        self.mainImage.image = undone;
+    }
 }
 
 - (IBAction)tappedPalette:(UIButton *)sender {

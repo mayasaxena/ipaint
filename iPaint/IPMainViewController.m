@@ -43,20 +43,20 @@ BOOL mouseSwiped;
     brush = 10.0;
     opacity = 1.0;
     
-    self.paletteButton.layer.cornerRadius = self.paletteButton.bounds.size.width / 2;
-    self.brushButton.layer.cornerRadius = self.brushButton.bounds.size.width / 2;
-    self.undoButton.layer.cornerRadius = self.undoButton.bounds.size.width / 2;
-    self.clearButton.layer.cornerRadius = self.clearButton.bounds.size.width / 2;
-    self.saveButton.layer.cornerRadius = self.saveButton.bounds.size.width / 2;
+    self.paletteButton.layer.cornerRadius = CGRectGetWidth(self.paletteButton.bounds) / 2;
+    self.brushButton.layer.cornerRadius = CGRectGetWidth(self.brushButton.bounds) / 2;
+    self.undoButton.layer.cornerRadius = CGRectGetWidth(self.undoButton.bounds) / 2;
+    self.clearButton.layer.cornerRadius = CGRectGetWidth(self.clearButton.bounds) / 2;
+    self.saveButton.layer.cornerRadius = CGRectGetWidth(self.saveButton.bounds) / 2;
     
     self.undoStack = [[NSMutableArray alloc] init];
     
-    for (UIButton *button in self.colorsView.subviews) {
-        button.layer.cornerRadius = button.bounds.size.width / 2;
+    for (UIButton *colorButton in self.colorsView.subviews) {
+        colorButton.layer.cornerRadius = CGRectGetWidth(colorButton.bounds) / 2;
     }
     
-    for (UIButton *button in self.sizeView.subviews) {
-        button.layer.cornerRadius = button.bounds.size.width / 2;
+    for (UIButton *sizeButton in self.sizeView.subviews) {
+        sizeButton.layer.cornerRadius = CGRectGetWidth(sizeButton.bounds) / 2;
     }
 }
 
@@ -100,7 +100,7 @@ BOOL mouseSwiped;
     [UIView animateWithDuration:0.5f animations:^{
         int yOffset = 0;
         for (UIButton *button in view.subviews) {
-            [button setFrame:CGRectMake(button.center.x - button.frame.size.width / 2, yOffset, button.frame.size.width, button.frame.size.height)];
+            button.frame = CGRectMake(button.center.x - CGRectGetWidth(button.frame) / 2, yOffset, CGRectGetWidth(button.frame), CGRectGetHeight(button.frame));
             yOffset += 35;
         }
         
@@ -112,8 +112,8 @@ BOOL mouseSwiped;
     [UIView animateWithDuration:0.5f
                      animations:^{
                          for (UIButton *button in view.subviews) {
-                             [button setFrame:CGRectMake(button.center.x - button.frame.size.width / 2, view.bounds.origin.y
-                                                         + view.bounds.size.height - 50, button.frame.size.width, button.frame.size.height)];
+                             [button setFrame:CGRectMake(button.center.x - CGRectGetWidth(button.frame) / 2, CGRectGetMinY(view.bounds)
+                                                         + CGRectGetHeight(view.bounds) - 50, CGRectGetWidth(button.frame), CGRectGetHeight(button.frame))];
                          }
                      } completion:^(BOOL finished) {
                          view.hidden = YES;

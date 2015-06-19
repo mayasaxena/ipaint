@@ -8,13 +8,7 @@
 
 #import "IPMainViewController.h"
 
-CGPoint lastPoint;
-CGFloat red;
-CGFloat green;
-CGFloat blue;
-CGFloat brush;
-CGFloat opacity;
-BOOL mouseSwiped;
+
 
 @interface IPMainViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *paletteButton;
@@ -22,10 +16,21 @@ BOOL mouseSwiped;
 @property (weak, nonatomic) IBOutlet UIButton *undoButton;
 @property (weak, nonatomic) IBOutlet UIButton *clearButton;
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
-@property (weak, nonatomic) IBOutlet UIImageView *tempDrawImage;
-@property (weak, nonatomic) IBOutlet UIImageView *mainImage;
+
+@property (weak, nonatomic) IBOutlet UIImageView *bufferImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *mainImageView;
 @property (weak, nonatomic) IBOutlet UIView *colorsView;
 @property (weak, nonatomic) IBOutlet UIView *sizeView;
+
+
+//Brush variables
+@property CGPoint lastPoint;
+@property CGFloat red;
+@property CGFloat green;
+@property CGFloat blue;
+@property CGFloat brushSize;
+@property CGFloat opacity;
+@property BOOL mouseSwiped;
 
 @property (strong) NSMutableArray *undoStack;
 
@@ -34,14 +39,32 @@ BOOL mouseSwiped;
 
 @implementation IPMainViewController
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self configureBrushVariables];
     
-    red = 0.0/255.0;
-    green = 0.0/255.0;
-    blue = 0.0/255.0;
-    brush = 10.0;
-    opacity = 1.0;
+    self.undoStack = [[NSMutableArray alloc] init];
+    
+    [self configureButtons];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    
+    
+}
+
+- (void)configureBrushVariables {
+    self.red = 0.0;
+    self.green = 0.0;
+    self.blue = 0.0;
+    self.brushSize = 10.0;
+    self.opacity = 1.0;
+}
+
+- (void)configureButtons {
     
     self.paletteButton.layer.cornerRadius = CGRectGetWidth(self.paletteButton.bounds) / 2;
     self.brushButton.layer.cornerRadius = CGRectGetWidth(self.brushButton.bounds) / 2;
@@ -49,7 +72,6 @@ BOOL mouseSwiped;
     self.clearButton.layer.cornerRadius = CGRectGetWidth(self.clearButton.bounds) / 2;
     self.saveButton.layer.cornerRadius = CGRectGetWidth(self.saveButton.bounds) / 2;
     
-    self.undoStack = [[NSMutableArray alloc] init];
     
     for (UIButton *colorButton in self.colorsView.subviews) {
         colorButton.layer.cornerRadius = CGRectGetWidth(colorButton.bounds) / 2;
@@ -69,15 +91,15 @@ BOOL mouseSwiped;
 }
 
 - (IBAction)tappedClear:(UIButton *)sender {
-    self.mainImage.image = nil;
+    self.mainImageView.image = nil;
     [self.undoStack removeAllObjects];
 }
 
 - (IBAction)tappedUndo:(UIButton *)sender {
-    self.mainImage.image = nil;
+    self.mainImageView.image = nil;
     UIImage *undone = [self popOffStack];
     if (undone != nil) {
-        self.mainImage.image = undone;
+        self.mainImageView.image = undone;
     }
 }
 
@@ -91,7 +113,7 @@ BOOL mouseSwiped;
 }
 
 - (IBAction)tappedSave:(UIButton *)sender {
-    UIImageWriteToSavedPhotosAlbum(self.mainImage.image,nil,nil,nil);
+    UIImageWriteToSavedPhotosAlbum(self.mainImageView.image,nil,nil,nil);
 }
 
 
@@ -100,7 +122,9 @@ BOOL mouseSwiped;
     [UIView animateWithDuration:0.5f animations:^{
         int yOffset = 0;
         for (UIButton *button in view.subviews) {
-            button.frame = CGRectMake(button.center.x - CGRectGetWidth(button.frame) / 2, yOffset, CGRectGetWidth(button.frame), CGRectGetHeight(button.frame));
+            button.frame = CGRectMake(button.center.x - CGRectGetWidth(button.frame) / 2,
+                                      yOffset, CGRectGetWidth(button.frame),
+                                      CGRectGetHeight(button.frame));
             yOffset += 35;
         }
         
@@ -112,8 +136,10 @@ BOOL mouseSwiped;
     [UIView animateWithDuration:0.5f
                      animations:^{
                          for (UIButton *button in view.subviews) {
-                             [button setFrame:CGRectMake(button.center.x - CGRectGetWidth(button.frame) / 2, CGRectGetMinY(view.bounds)
-                                                         + CGRectGetHeight(view.bounds) - 50, CGRectGetWidth(button.frame), CGRectGetHeight(button.frame))];
+                             [button setFrame:CGRectMake(button.center.x - CGRectGetWidth(button.frame) / 2,
+                                                         CGRectGetMinY(view.bounds) + CGRectGetHeight(view.bounds) - 50,
+                                                         CGRectGetWidth(button.frame),
+                                                         CGRectGetHeight(button.frame))];
                          }
                      } completion:^(BOOL finished) {
                          view.hidden = YES;
@@ -125,9 +151,9 @@ BOOL mouseSwiped;
 - (IBAction)tappedColor:(UIButton *)sender {
     [self hideMenuFromButton:self.paletteButton withView:self.colorsView];
     const CGFloat* colors = CGColorGetComponents(sender.backgroundColor.CGColor);
-    red = colors[0];
-    green = colors[1];
-    blue = colors[2];
+    self.red = colors[0];
+    self.green = colors[1];
+    self.blue = colors[2];
     if (colors[0] == colors[1]  && colors[1] == colors[2]) {
         self.paletteButton.backgroundColor = self.brushButton.backgroundColor;
     } else {
@@ -139,7 +165,7 @@ BOOL mouseSwiped;
 - (IBAction)tappedSize:(UIButton *)sender {
     [self hideMenuFromButton:self.brushButton withView:self.sizeView];
     
-    brush = sender.tag;
+    self.brushSize = sender.tag;
 }
 
 
@@ -148,56 +174,56 @@ BOOL mouseSwiped;
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
   
-    mouseSwiped = NO;
+    self.mouseSwiped = NO;
     UITouch *touch = [touches anyObject];
-    lastPoint = [touch locationInView:self.view];
+    self.lastPoint = [touch locationInView:self.view];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
 
-    mouseSwiped = YES;
+    self.mouseSwiped = YES;
     UITouch *touch = [touches anyObject];
     CGPoint currentPoint = [touch locationInView:self.view];
     UIGraphicsBeginImageContextWithOptions(self.view.frame.size, NO, 0.0);
-    [self.tempDrawImage.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    CGContextMoveToPoint(UIGraphicsGetCurrentContext(), lastPoint.x, lastPoint.y);
+    [self.bufferImageView.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    CGContextMoveToPoint(UIGraphicsGetCurrentContext(), self.lastPoint.x, self.lastPoint.y);
     CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), currentPoint.x, currentPoint.y);
     CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound);
-    CGContextSetLineWidth(UIGraphicsGetCurrentContext(), brush );
-    CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), red, green, blue, 1.0);
+    CGContextSetLineWidth(UIGraphicsGetCurrentContext(), self.brushSize );
+    CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), self.red, self.green, self.blue, 1.0);
     CGContextSetBlendMode(UIGraphicsGetCurrentContext(),kCGBlendModeNormal);
     CGContextStrokePath(UIGraphicsGetCurrentContext());
-    self.tempDrawImage.image = UIGraphicsGetImageFromCurrentImageContext();
-    [self.tempDrawImage setAlpha:opacity];
+    self.bufferImageView.image = UIGraphicsGetImageFromCurrentImageContext();
+    [self.bufferImageView setAlpha:self.opacity];
     UIGraphicsEndImageContext();
     
     
-    lastPoint = currentPoint;
+    self.lastPoint = currentPoint;
 }
 
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     
-    if(!mouseSwiped) {
+    if(!self.mouseSwiped) {
         UIGraphicsBeginImageContextWithOptions(self.view.frame.size, NO, 0.0);
-        [self.tempDrawImage.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        [self.bufferImageView.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
         CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound);
-        CGContextSetLineWidth(UIGraphicsGetCurrentContext(), brush);
-        CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), red, green, blue, opacity);
-        CGContextMoveToPoint(UIGraphicsGetCurrentContext(), lastPoint.x, lastPoint.y);
-        CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), lastPoint.x, lastPoint.y);
+        CGContextSetLineWidth(UIGraphicsGetCurrentContext(), self.brushSize);
+        CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), self.red, self.green, self.blue, self.opacity);
+        CGContextMoveToPoint(UIGraphicsGetCurrentContext(), self.lastPoint.x, self.lastPoint.y);
+        CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), self.lastPoint.x, self.lastPoint.y);
         CGContextStrokePath(UIGraphicsGetCurrentContext());
         CGContextFlush(UIGraphicsGetCurrentContext());
-        self.tempDrawImage.image = UIGraphicsGetImageFromCurrentImageContext();
+        self.bufferImageView.image = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
     }
     
     UIGraphicsBeginImageContextWithOptions(self.view.frame.size, NO, 0.0);
-    [self.mainImage.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) blendMode:kCGBlendModeNormal alpha:1.0];
-    [self.tempDrawImage.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) blendMode:kCGBlendModeNormal alpha:opacity];
-    self.mainImage.image = UIGraphicsGetImageFromCurrentImageContext();
-    [self pushOntoStack:self.mainImage.image];
-    self.tempDrawImage.image = nil;
+    [self.mainImageView.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) blendMode:kCGBlendModeNormal alpha:1.0];
+    [self.bufferImageView.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) blendMode:kCGBlendModeNormal alpha:self.opacity];
+    self.mainImageView.image = UIGraphicsGetImageFromCurrentImageContext();
+    [self pushOntoStack:self.mainImageView.image];
+    self.bufferImageView.image = nil;
     UIGraphicsEndImageContext();
 }
 
